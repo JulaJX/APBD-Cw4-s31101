@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APBD_Cw4_s31101.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260517130949_Init")]
+    [Migration("20260517150146_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -53,6 +53,32 @@ namespace APBD_Cw4_s31101.Migrations
                     b.HasIndex("ComponentTypesId");
 
                     b.ToTable("Components");
+
+                    b.HasData(
+                        new
+                        {
+                            Code = "CPU-0001",
+                            ComponentManufacturersId = 1,
+                            ComponentTypesId = 1,
+                            Description = "High-end gaming CPU",
+                            Name = "Ryzen 7 7800X3D"
+                        },
+                        new
+                        {
+                            Code = "GPU-0001",
+                            ComponentManufacturersId = 2,
+                            ComponentTypesId = 2,
+                            Description = "Gaming GPU",
+                            Name = "RTX 4070"
+                        },
+                        new
+                        {
+                            Code = "RAM-0001",
+                            ComponentManufacturersId = 3,
+                            ComponentTypesId = 3,
+                            Description = "Memory kit",
+                            Name = "16GB DDR5"
+                        });
                 });
 
             modelBuilder.Entity("Cwiczenia4Api.Models.ComponentManufacturer", b =>
@@ -79,6 +105,29 @@ namespace APBD_Cw4_s31101.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ComponentManufacturers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Abbreviation = "ASUS",
+                            FoundationDate = new DateOnly(1989, 4, 1),
+                            FullName = "ASUSTeK Computer Inc."
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Abbreviation = "MSI",
+                            FoundationDate = new DateOnly(1986, 8, 1),
+                            FullName = "Micro-Star International"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Abbreviation = "GIG",
+                            FoundationDate = new DateOnly(1986, 1, 1),
+                            FullName = "Gigabyte Technology"
+                        });
                 });
 
             modelBuilder.Entity("Cwiczenia4Api.Models.ComponentType", b =>
@@ -102,6 +151,26 @@ namespace APBD_Cw4_s31101.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ComponentTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Abbreviation = "CPU",
+                            Name = "Processor"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Abbreviation = "GPU",
+                            Name = "Graphics Card"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Abbreviation = "RAM",
+                            Name = "Memory"
+                        });
                 });
 
             modelBuilder.Entity("Cwiczenia4Api.Models.Pc", b =>
@@ -132,6 +201,35 @@ namespace APBD_Cw4_s31101.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Pcs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 100,
+                            CreatedAt = new DateTime(2026, 5, 8, 9, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Gaming Beast X",
+                            Stock = 5,
+                            Warranty = 36,
+                            Weight = 12.5
+                        },
+                        new
+                        {
+                            Id = 101,
+                            CreatedAt = new DateTime(2026, 4, 15, 13, 30, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Office Mini Pro",
+                            Stock = 12,
+                            Warranty = 24,
+                            Weight = 4.2000000000000002
+                        },
+                        new
+                        {
+                            Id = 102,
+                            CreatedAt = new DateTime(2026, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Budget Starter",
+                            Stock = 20,
+                            Warranty = 12,
+                            Weight = 6.0
+                        });
                 });
 
             modelBuilder.Entity("Cwiczenia4Api.Models.PcComponent", b =>
@@ -150,6 +248,38 @@ namespace APBD_Cw4_s31101.Migrations
                     b.HasIndex("ComponentCode");
 
                     b.ToTable("PcComponents");
+
+                    b.HasData(
+                        new
+                        {
+                            PCId = 100,
+                            ComponentCode = "CPU-0001",
+                            Amount = 1
+                        },
+                        new
+                        {
+                            PCId = 100,
+                            ComponentCode = "GPU-0001",
+                            Amount = 1
+                        },
+                        new
+                        {
+                            PCId = 100,
+                            ComponentCode = "RAM-0001",
+                            Amount = 2
+                        },
+                        new
+                        {
+                            PCId = 101,
+                            ComponentCode = "CPU-0001",
+                            Amount = 1
+                        },
+                        new
+                        {
+                            PCId = 101,
+                            ComponentCode = "RAM-0001",
+                            Amount = 1
+                        });
                 });
 
             modelBuilder.Entity("Cwiczenia4Api.Models.Component", b =>

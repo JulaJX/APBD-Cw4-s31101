@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace APBD_Cw4_s31101.Migrations
 {
     /// <inheritdoc />
@@ -107,6 +109,58 @@ namespace APBD_Cw4_s31101.Migrations
                         principalTable: "Pcs",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "ComponentManufacturers",
+                columns: new[] { "Id", "Abbreviation", "FoundationDate", "FullName" },
+                values: new object[,]
+                {
+                    { 1, "ASUS", new DateOnly(1989, 4, 1), "ASUSTeK Computer Inc." },
+                    { 2, "MSI", new DateOnly(1986, 8, 1), "Micro-Star International" },
+                    { 3, "GIG", new DateOnly(1986, 1, 1), "Gigabyte Technology" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ComponentTypes",
+                columns: new[] { "Id", "Abbreviation", "Name" },
+                values: new object[,]
+                {
+                    { 1, "CPU", "Processor" },
+                    { 2, "GPU", "Graphics Card" },
+                    { 3, "RAM", "Memory" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Pcs",
+                columns: new[] { "Id", "CreatedAt", "Name", "Stock", "Warranty", "Weight" },
+                values: new object[,]
+                {
+                    { 100, new DateTime(2026, 5, 8, 9, 0, 0, 0, DateTimeKind.Unspecified), "Gaming Beast X", 5, 36, 12.5 },
+                    { 101, new DateTime(2026, 4, 15, 13, 30, 0, 0, DateTimeKind.Unspecified), "Office Mini Pro", 12, 24, 4.2000000000000002 },
+                    { 102, new DateTime(2026, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified), "Budget Starter", 20, 12, 6.0 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Components",
+                columns: new[] { "Code", "ComponentManufacturersId", "ComponentTypesId", "Description", "Name" },
+                values: new object[,]
+                {
+                    { "CPU-0001", 1, 1, "High-end gaming CPU", "Ryzen 7 7800X3D" },
+                    { "GPU-0001", 2, 2, "Gaming GPU", "RTX 4070" },
+                    { "RAM-0001", 3, 3, "Memory kit", "16GB DDR5" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "PcComponents",
+                columns: new[] { "ComponentCode", "PCId", "Amount" },
+                values: new object[,]
+                {
+                    { "CPU-0001", 100, 1 },
+                    { "GPU-0001", 100, 1 },
+                    { "RAM-0001", 100, 2 },
+                    { "CPU-0001", 101, 1 },
+                    { "RAM-0001", 101, 1 }
                 });
 
             migrationBuilder.CreateIndex(

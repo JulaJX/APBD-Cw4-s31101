@@ -68,31 +68,31 @@ public class AppDbContext : DbContext
                 .HasForeignKey(e => e.ComponentCode);
         });
 
-        // seed data
+      // seed data
 
         modelBuilder.Entity<ComponentManufacturer>().HasData(
-        new ComponentManufacturer
-        {
-            Id = 1,
-            Abbreviation = "ASUS",
-            FullName = "ASUSTeK Computer Inc.",
-            FoundationDate = new DateTime(1989, 4, 1)
-        },
-        new ComponentManufacturer
-        {
-            Id = 2,
-            Abbreviation = "MSI",
-            FullName = "Micro-Star International",
-            FoundationDate = new DateTime(1986, 8, 1)
-        },
-        new ComponentManufacturer
-        {
-            Id = 3,
-            Abbreviation = "GIG",
-            FullName = "Gigabyte Technology",
-            FoundationDate = new DateTime(1986, 1, 1)
-        }
-    );
+            new ComponentManufacturer
+            {
+                Id = 1,
+                Abbreviation = "ASUS",
+                FullName = "ASUSTeK Computer Inc.",
+                FoundationDate = new DateOnly(1989, 4, 1)
+            },
+            new ComponentManufacturer
+            {
+                Id = 2,
+                Abbreviation = "MSI",
+                FullName = "Micro-Star International",
+                FoundationDate = new DateOnly(1986, 8, 1)
+            },
+            new ComponentManufacturer
+            {
+                Id = 3,
+                Abbreviation = "GIG",
+                FullName = "Gigabyte Technology",
+                FoundationDate = new DateOnly(1986, 1, 1)
+            }
+        );
 
         modelBuilder.Entity<ComponentType>().HasData(
             new ComponentType { Id = 1, Abbreviation = "CPU", Name = "Processor" },
@@ -103,7 +103,7 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<Pc>().HasData(
             new Pc
             {
-                Id = 1,
+                Id = 100,
                 Name = "Gaming Beast X",
                 Weight = 12.5,
                 Warranty = 36,
@@ -112,7 +112,7 @@ public class AppDbContext : DbContext
             },
             new Pc
             {
-                Id = 2,
+                Id = 101,
                 Name = "Office Mini Pro",
                 Weight = 4.2,
                 Warranty = 24,
@@ -121,7 +121,7 @@ public class AppDbContext : DbContext
             },
             new Pc
             {
-                Id = 3,
+                Id = 102,
                 Name = "Budget Starter",
                 Weight = 6.0,
                 Warranty = 12,
@@ -157,12 +157,12 @@ public class AppDbContext : DbContext
             }
         );
 
-        modelBuilder.Entity<PcComponent>().HasData(
-            new PcComponent { PCId = 1, ComponentCode = "CPU-0001", Amount = 1 },
-            new PcComponent { PCId = 1, ComponentCode = "GPU-0001", Amount = 1 },
-            new PcComponent { PCId = 1, ComponentCode = "RAM-0001", Amount = 2 },
-            new PcComponent { PCId = 2, ComponentCode = "CPU-0001", Amount = 1 },
-            new PcComponent { PCId = 2, ComponentCode = "RAM-0001", Amount = 1 }
-        );
-        }
+    modelBuilder.Entity<PcComponent>().HasData(
+        new PcComponent { PCId = 100, ComponentCode = "CPU-0001", Amount = 1 },
+        new PcComponent { PCId = 100, ComponentCode = "GPU-0001", Amount = 1 },
+        new PcComponent { PCId = 100, ComponentCode = "RAM-0001", Amount = 2 },
+        new PcComponent { PCId = 101, ComponentCode = "CPU-0001", Amount = 1 },
+        new PcComponent { PCId = 101, ComponentCode = "RAM-0001", Amount = 1 }
+    );
+    }
 }
