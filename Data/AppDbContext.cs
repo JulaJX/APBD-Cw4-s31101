@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using Cwiczenia7Api.Models;
+using Cwiczenia4Api.Models;
 
-namespace Cwiczenia7Api.Data;
+namespace Cwiczenia4Api.Data;
 
 public class AppDbContext : DbContext
 {
