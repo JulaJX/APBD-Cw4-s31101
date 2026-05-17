@@ -1,4 +1,4 @@
-namespace Cwiczenia7Api.Models;
+namespace Cwiczenia4Api.Models;
 
 public class PcComponent
 {
